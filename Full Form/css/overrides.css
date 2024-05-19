@@ -1,0 +1,27 @@
+.candidateblock {display: inline-block;}
+
+label {display: inline-table;}
+
+.assessmentcontainer,.matvar,.fibinput{font-family:Kokila;}
+
+.matemtext{font-family:Palatino Linotype;}
+
+.assessmentcontainer,.matvar,.fibinput{font-size:35px;}
+
+.assessmentcontainer,.matvar,.fibinput{color:#00FFFF;}
+
+.matemtext{font-size:50px;}
+
+.matemtext{color:#0000FF;}
+
+.backbutton{display:none;}
+
+.loaderbackground, .loaderbackgroundsvg {background-image: url('../resfiles/Magenta.jpg');}
+
+.assessmentbackground, .assessmentbackgroundsvg {background-image: url('../resfiles/Nile.jpg');}
+
+.assessmentcontainerbackground, .assessmentcontainerbackgroundsvg {background-image: none;}
+
+.finishedbackground, .finishedbackgroundsvg{background-image: url('../resfiles/vista_wallpapers10.jpg');}
+
+
