@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSCIT FINAL EXAM MCQ Quiz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .quiz-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .question:last-child {
+            border-bottom: none;
+        }
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            margin-bottom: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        .option:hover {
+            background-color: #f0f8ff;
+        }
+        .option input {
+            margin-right: 10px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 20px auto;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #results {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+        }
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .feedback {
+            margin-top: 10px;
+            padding: 8px;
+            border-radius: 4px;
+            display: none;
+        }
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .progress-bar {
+            height: 10px;
+            background-color: #3498db;
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.5s;
+        }
+        .question-number {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>MSCIT FINAL EXAM MCQ </h1>
+    
+    <div class="progress-container">
+        <div class="progress-bar" id="progress"></div>
+    </div>
+    
+    <div class="quiz-container" id="quiz">
+        <!-- Questions will be inserted here by JavaScript -->
+    </div>
+    
+    <button id="submit">Submit Quiz</button>
+    
+    <div id="results"></div>
+    
+    <script>
+        const quizData = [
+            {
+                question: "A(n) ______ is a thin strand of glass that transmits pulsating beams of light at speeds that approach 100 Gbps.",
+                options: ["Twisted Cable", "Fiber-optic Cable", "Coaxial Cable", "Telephone Cable"],
+                answer: "Fiber-optic Cable",
+                explanation: "Fiber-optic cables use light to transmit data at extremely high speeds."
+            },
+            {
+                question: "Which of the following is NOT a primary technology used for wireless connections?",
+                options: ["Wi-Fi", "Fiber Optics", "Bluetooth", "Cellular"],
+                answer: "Fiber Optics",
+                explanation: "Fiber optics is a wired technology, not wireless."
+            },
+            {
+                question: "______ are highly portable devices that support the use of a stylus or pen to input commands and data.",
+                options: ["PDA", "Desktop", "Tablet PCs", "Laptop"],
+                answer: "Tablet PCs",
+                explanation: "Tablet PCs are designed for portability and stylus input."
+            },
+            {
+                question: "Evaluate the focus of corporate pages on Facebook versus LinkedIn.",
+                options: [
+                    "Sharing personal vacation photos",
+                    "Connecting friends and family",
+                    "Sharing resumes and job successes on Facebook",
+                    "Branding and selling products on Facebook, promoting jobs and corporate culture on LinkedIn"
+                ],
+                answer: "Branding and selling products on Facebook, promoting jobs and corporate culture on LinkedIn",
+                explanation: "Facebook is more marketing-focused while LinkedIn is professional networking."
+            },
+            {
+                question: "What type of AI can create new content, such as music or art?",
+                options: ["Generative AI", "Narrow AI", "Natural AI", "General AI"],
+                answer: "Generative AI",
+                explanation: "Generative AI specializes in creating new content."
+            },
+            {
+                question: "______ are removable storage devices used to store massive amounts of information.",
+                options: ["Floppy Disk", "CD", "Hard-disk packs", "None of these"],
+                answer: "Hard-disk packs",
+                explanation: "Hard-disk packs are high-capacity removable storage solutions."
+            },
+            {
+                question: "Which lights are present on a webcam that are helpful in a low-light environment?",
+                options: ["Natural Light", "LED Light", "Spot Light", "HD Light"],
+                answer: "LED Light",
+                explanation: "Webcams often use LED lights to improve visibility in low light."
+            },
+            {
+                question: "How often should you backup your computer?",
+                options: [
+                    "Once a week",
+                    "Every day",
+                    "Whenever you create new files or upload pictures that you don't want to lose",
+                    "Only when you suspect there is or could be a problem"
+                ],
+                answer: "Whenever you create new files or upload pictures that you don't want to lose",
+                explanation: "Regular backups when creating important files is the best practice."
+            },
+            {
+                question: "What do browsers primarily provide to users?",
+                options: ["System updates", "Hardware drivers", "Access to web resources", "Local file management"],
+                answer: "Access to web resources",
+                explanation: "Browsers are primarily for accessing content on the web."
+            },
+            {
+                question: "What is the process of saving information to a secondary storage device called?",
+                options: ["Ascending", "Writing", "Reading"],
+                answer: "Writing",
+                explanation: "Writing refers to saving data to storage media."
+            }
+        ];
+
+        const quizContainer = document.getElementById('quiz');
+        const resultsContainer = document.getElementById('results');
+        const submitButton = document.getElementById('submit');
+        const progressBar = document.getElementById('progress');
+
+        // Display the quiz questions
+        function displayQuiz() {
+            const output = [];
+            
+            quizData.forEach((currentQuestion, questionNumber) => {
+                const options = [];
+                
+                for (let i = 0; i < currentQuestion.options.length; i++) {
+                    options.push(
+                        `<div class="option">
+                            <input type="radio" name="question${questionNumber}" id="question${questionNumber}option${i}" value="${currentQuestion.options[i]}">
+                            <label for="question${questionNumber}option${i}">${currentQuestion.options[i]}</label>
+                        </div>`
+                    );
+                }
+                
+                output.push(
+                    `<div class="question" id="q${questionNumber}">
+                        <div class="question-number">Question ${questionNumber + 1} of ${quizData.length}</div>
+                        <div class="question-text">${currentQuestion.question}</div>
+                        <div class="options">${options.join('')}</div>
+                        <div class="feedback" id="feedback${questionNumber}"></div>
+                    </div>`
+                );
+            });
+            
+            quizContainer.innerHTML = output.join('');
+        }
+
+        // Show results when quiz is submitted
+        function showResults() {
+            const answerContainers = quizContainer.querySelectorAll('.question');
+            let numCorrect = 0;
+            
+            quizData.forEach((currentQuestion, questionNumber) => {
+                const answerContainer = answerContainers[questionNumber];
+                const selector = `input[name=question${questionNumber}]:checked`;
+                const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+                const feedback = document.getElementById(`feedback${questionNumber}`);
+                
+                if (userAnswer === currentQuestion.answer) {
+                    numCorrect++;
+                    answerContainer.classList.add('correct');
+                    feedback.innerHTML = `<strong>Correct!</strong> ${currentQuestion.explanation}`;
+                } else {
+                    answerContainer.classList.add('incorrect');
+                    feedback.innerHTML = `<strong>Incorrect.</strong> The correct answer is <strong>${currentQuestion.answer}</strong>. ${currentQuestion.explanation}`;
+                }
+                
+                feedback.style.display = 'block';
+            });
+            
+            // Calculate percentage and update progress bar
+            const percentage = Math.round((numCorrect / quizData.length) * 100);
+            progressBar.style.width = `${percentage}%`;
+            
+            // Show results
+            resultsContainer.innerHTML = `You scored ${numCorrect} out of ${quizData.length} (${percentage}%)`;
+            resultsContainer.style.display = 'block';
+            
+            // Scroll to results
+            resultsContainer.scrollIntoView({ behavior: 'smooth' });
+            
+            // Disable all inputs and change button text
+            const inputs = quizContainer.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.disabled = true;
+            });
+            
+            submitButton.textContent = 'Quiz Completed';
+            submitButton.disabled = true;
+            submitButton.style.backgroundColor = '#95a5a6';
+        }
+
+        // Event listeners
+        submitButton.addEventListener('click', showResults);
+
+        // Initialize quiz
+        displayQuiz();
+
+        // Update progress bar as user answers questions
+        quizContainer.addEventListener('change', function(e) {
+            if (e.target.type === 'radio') {
+                const answeredQuestions = new Set();
+                const inputs = quizContainer.querySelectorAll('input:checked');
+                
+                inputs.forEach(input => {
+                    const questionNumber = input.name.replace('question', '');
+                    answeredQuestions.add(questionNumber);
+                });
+                
+                const percentage = Math.round((answeredQuestions.size / quizData.length) * 100);
+                progressBar.style.width = `${percentage}%`;
+            }
+        });
+    </script>
+</body>
+</html>
